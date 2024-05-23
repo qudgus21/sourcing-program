@@ -1,0 +1,64 @@
+{
+  "name": "electron-test",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "dotenv": "^16.4.5",
+    "firebase": "^10.12.0",
+    "react": "^18.3.1",
+    "react-bootstrap": "^2.10.2",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.1",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^30.0.5",
+    "electron-builder": "^24.13.3",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "wait-on": "^7.2.0"
+  },
+  "main": "public/electron.js",
+  "homepage": ".",
+  "scripts": {
+    "start": "concurrently \" yarn react-start\" \"wait-on http://localhost:3000 && yarn electron-start\"",
+    "react-start": "react-scripts start",
+    "electron-start": "cross-env mode=dev electron .",
+    "react-build": "react-scripts build",
+    "build": "yarn react-build && cross-env mode=production electron-builder",
+    "build:win": "yarn react-build && electron-builder --win --x64"
+  },
+  "build": {
+    "files": [
+      "build/**/*",
+      "src/electron/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
