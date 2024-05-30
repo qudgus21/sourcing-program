@@ -1,9 +1,10 @@
 import React from 'react';
-import Routes from './routes.jsx';
+import AppRoutes from './routes';
+
 
 const App = () => (
-  <div>
-    <Routes />
+  <div className='w-screen h-screen'>
+    <AppRoutes/>
   </div>
 );
 
