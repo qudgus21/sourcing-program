@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { db } from '../../firebase';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { db } from '../../firebase';
 import { Alert, Button, TextField } from '@mui/material';
 import logo from '../../assets/logo.png'
 
 const Login = () => {
-  useEffect(()=> {},[])
+  const navigate = useNavigate();
 
   const [email, setEamil] = useState('');
   const [license, setLicense] = useState('');
@@ -53,6 +54,15 @@ const Login = () => {
       return;
     }
 
+    const liecnseEndTime = user.end_time;
+    const firestoreDate = new Date(liecnseEndTime.seconds * 1000 + liecnseEndTime.nanoseconds / 1000000);
+    const currentDate = new Date();
+
+    if (currentDate > firestoreDate) {
+      setAlertMessage('라이센스가 만료되었습니다. 연장문의 부탁드립니다.');
+      return;
+    }
+
     saveUserInfo(docRef, user);
   }
 
@@ -67,7 +77,9 @@ const Login = () => {
       key: user.key
     })
 
-    localStorage.setItem('esource', data)
+    localStorage.setItem('esource', data);
+
+    navigate('/Home');
   }
 
   return (
