@@ -64,7 +64,7 @@ const Login = () => {
     }
 
     saveUserInfo(docRef, user);
-  }
+  } 
 
   const saveUserInfo = async(docRef, user) => {
     setAlertMessage('');
@@ -79,7 +79,7 @@ const Login = () => {
 
     localStorage.setItem('esource', data);
 
-    navigate('/Home');
+    navigate('/');
   }
 
   return (
