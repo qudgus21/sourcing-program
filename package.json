@@ -42,12 +42,24 @@
     "build:win": "yarn react-build && electron-builder --win --x64"
   },
   "build": {
+    "productName": "소싱마스터",
     "files": [
       "build/**/*",
       "src/electron/**/*"
     ],
     "directories": {
-      "buildResources": "assets"
+      "buildResources": "src/assets"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "src/assets/charcoal.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
     }
   },
   "eslintConfig": {

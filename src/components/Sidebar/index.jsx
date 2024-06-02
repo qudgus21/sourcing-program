@@ -3,6 +3,7 @@ import { Drawer, List, ListItem, ListItemText } from '@mui/material';
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import LanguageRoundedIcon from '@mui/icons-material/LanguageRounded';
 import Person3RoundedIcon from '@mui/icons-material/Person3Rounded';
+import logo from '../../assets/logo.png'
 
 const Sidebar = ({pages, setCurrentPage}) => {
 
@@ -20,7 +21,7 @@ const Sidebar = ({pages, setCurrentPage}) => {
         sx={{
           width: '20%',
           flexShrink: 0,
-          [`& .MuiDrawer-paper`]: { width: '20%', boxSizing: 'border-box', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.16);'},
+          [`& .MuiDrawer-paper`]: { width: '20%', boxSizing: 'border-box', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.16)', display: 'flex', flexDirection:'column', justifyContent:'space-between'},
         }}
       >
         <List>
@@ -57,6 +58,7 @@ const Sidebar = ({pages, setCurrentPage}) => {
             </ListItem> 
           ))}
         </List>
+        <div className='relative bottom-[5%]'><img className='bottom-[0px]' src={logo} alt="로고"/></div>
       </Drawer>
     </div>
   );

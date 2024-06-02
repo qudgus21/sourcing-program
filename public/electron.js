@@ -17,6 +17,7 @@ const createWindow = () => {
             enableRemoteModule: true,
             devTools: true
         },
+        icon: path.join(__dirname, '..', 'src', 'assets', 'charcoal.ico')
     })
 
     if(process.env.mode === "dev") {
